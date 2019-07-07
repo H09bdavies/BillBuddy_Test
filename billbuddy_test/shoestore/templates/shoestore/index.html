@@ -3,8 +3,26 @@
 {% block content %}
 <body>
   <div class="container fluid">
-    <div class="row mb-5">
-      <div class="text align-middle"><h2>Welcome to the online shoe store</h2></div>
+    <div class="row">
+      <div class="col-md">
+        <div class="row mb-5">
+          <div class="text align-middle"><h2>Welcome to the online shoe store</h2></div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter by brand
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {% if brand_list %}
+                {% for brand in brand_list %}
+                  <a class="dropdown-item" href="/shoestore/brands/{{brand.brand_name}}/">{{brand.brand_name}}</a>
+                {% endfor %}
+              {% endif %}
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       {% if newest_products_list %}
@@ -14,7 +32,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{product.product_name}}</h5>
                 <p class="card-text">{{product.product_description}}</p>
-                <a href="/shoestore/{{ product.id }}/" class="btn btn-primary">Go somewhere</a>
+                <a href="/shoestore/product/{{ product.id }}/" class="btn btn-primary">View product details</a>
               </div>
             </div>
         {% endfor %}
