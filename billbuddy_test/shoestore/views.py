@@ -15,6 +15,13 @@ def index(request):
   brand_list = Brand.objects.all()
   context = {'newest_products_list': newest_products_list, 'brand_list': brand_list}
   return render(request, 'shoestore/index.html', context)
+  
+def basket(request):
+  order = Order.objects.filter(user = request.user)
+  print(order)
+  orderitem_list = Orderitem.objects.filter(order = order[0])
+  context = {'orderitem_list': orderitem_list}
+  return render(request, 'shoestore/basket.html', context)
 
 def brands(request, brand):
   brand_products_list = Product.objects.filter(brand=brand).order_by('-pub_date')
