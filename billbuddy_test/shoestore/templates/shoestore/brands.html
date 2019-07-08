@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+  <div class="container fluid">
+    <div class="col-9">
+      <div class="row mb-5">
+        <div class="text align-middle"><h2>Filter by brand</h2></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" >Action</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {% if brand_products_list %}
+        {% for product in newest_products_list %}
+          <div class="card border" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Placeholder">
+              <div class="card-body">
+                <h5 class="card-title">{{product.product_name}}</h5>
+                <p class="card-text">{{product.product_description}}</p>
+                <a href="/shoestore/{{ product.id }}/" class="btn btn-primary">View product details</a>
+              </div>
+            </div>
+        {% endfor %}
+      {% else %}
+        <p>No products are available.</p>
+      {% endif %}
+    </div>
+  </div>  
+</body>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+  <div class="container fluid">
+    {% if product %}
+    <div style="background:transparent !important" class="jumbotron">
+      <h1 class="display-4">{{product.product_name}}</h1>
+      <p class="lead">{{product.product_desc}}</p>
+      <p class="lead">£{{product.price}}</p>
+      <hr class="my-4">
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Add to basket</a>
+      </p>
+    </div>
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endif %}
+  </div>  
+</body>
+{% endblock %}

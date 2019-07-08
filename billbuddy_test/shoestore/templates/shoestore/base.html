@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <title>ShoeStore</title>
+  </head>
+  <body>
+      <div class="pb-2 mt-4 mb-2 border-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col text-left">
+              <a href="/shoestore/">Online Shoe Store</a>
+            </div>
+            <div class="col text-right">
+              {% if user.is_authenticated %}
+                Hi {{ user.username }}!
+                <p><a href="{% url 'logout' %}">logout</a></p>
+              {% else %}
+                <p>You are not logged in</p>
+                <a href="{% url 'login' %}">login</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  {% block content %}
+    
+  {% endblock %}
+</html>
