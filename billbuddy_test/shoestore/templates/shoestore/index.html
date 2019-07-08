@@ -32,7 +32,12 @@
               <div class="card-body">
                 <h5 class="card-title">{{product.product_name}}</h5>
                 <p class="card-text">{{product.product_description}}</p>
-                <a href="/shoestore/product/{{ product.id }}/" class="btn btn-primary">View product details</a>
+                <div class="row">
+                  <a href="{% url 'shoestore:detail' product.id %}"> class="btn btn-primary">View product details</a>
+                  <form action="{% url 'shoestore:buy' product.id %}" method="post">
+                    <button type="submit" class="btn btn-success">Buy Now</div>
+                  </form>
+                </div>
               </div>
             </div>
         {% endfor %}
