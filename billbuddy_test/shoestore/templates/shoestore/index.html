@@ -39,7 +39,7 @@
                   <a href="{% url 'shoestore:detail' product.id %}" class="btn btn-primary">View product details</a>
                   <form action="{% url 'shoestore:buy' product.id %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-success" value="{{product.id}}">Buy Now</div>
+                    <button type="submit" class="btn btn-success" value="{{product.id}}">Add to basket</div>
                   </form>
                 </div>
               </div>

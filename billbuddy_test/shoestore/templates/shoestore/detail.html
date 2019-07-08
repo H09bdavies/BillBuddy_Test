@@ -9,9 +9,10 @@
       <p class="lead">{{product.product_desc}}</p>
       <p class="lead">£{{product.price}}</p>
       <hr class="my-4">
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Add to basket</a>
-      </p>
+      <form action="{% url 'shoestore:buy' product.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success" value="{{product.id}}">Add to basket</div>
+      </form>
     </div>
     {% else %}
       <p>Something went wrong.</p>
